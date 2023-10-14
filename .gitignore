@@ -5,16 +5,17 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/
-target/
-out/
-*.exe/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+out/
+/out/
 *.iws
 *.iml
 *.ipr
+*.exe
+
 
 ### Eclipse ###
 .apt_generated
