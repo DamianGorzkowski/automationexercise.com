@@ -1,8 +1,11 @@
 package com.automationexercise.tcsteps;
 
 import com.automationexercise.pages.HomePage;
+import com.automationexercise.pages.LoginPage;
+import com.automationexercise.pages.UserData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +17,8 @@ import static org.junit.Assert.assertTrue;
 public class Tc1Steps {
     private WebDriver driver;
     private HomePage homePage;
+    private LoginPage loginPage;
+    private UserData userData;
 
 
     @Given("Launch browser")
@@ -21,6 +26,8 @@ public class Tc1Steps {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
+        userData = new UserData(driver);
 
     }
 
@@ -44,6 +51,29 @@ public class Tc1Steps {
         WebElement newUserSignupText = driver.findElement(By.cssSelector(".signup-form > h2"));
         String newUserText = newUserSignupText.getText();
         assertEquals("New User Signup!", newUserText);
-        
+
+    }
+
+    @When("Enter {string} and {string} address")
+    public void enterNameAndEmailAddress(String name, String email) {
+        loginPage.fillNewUserInputBox(userData.setName(name).setEmail(email));
+    }
+
+    @And("Click 'Signup' button")
+    public void clickSignupButton() {
+        loginPage.signInButtonClick();
+
+    }
+
+    @And("Verify that 'ENTER ACCOUNT INFORMATION' is visible")
+    public void verifyThatENTERACCOUNTINFORMATIONIsVisible() {
+        WebElement enterAccountText = driver.findElement(By.cssSelector(".title:nth-child(1) > b"));
+        String enterAccountTextVisibility = enterAccountText.getText();
+        assertEquals("ENTER ACCOUNT INFORMATION", enterAccountTextVisibility);
+    }
+
+    @And("Fill details: {string}, {string}, {string}, {string}, {string}")
+    public void fillDetailsTitleNameEmailPasswordDateOfBirth() {
+
     }
 }
