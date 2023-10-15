@@ -98,4 +98,9 @@ public class Tc1Steps {
     public void fillDetailsFirstNameLastNameCompanyAddressAddressCountryStateCityZipcodeMobileNumber(String firstName, String lastName, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
     signupPage.fillFormWIthOtherNeededInformation(userData.setFirstName(firstName).setLastName(lastName).setCompany(company).setAddress(address).setAddress2(address2).setCountry(country).setState(state).setCity(city).setZipcode(zipcode).setMobileNumber(mobileNumber));
     }
+
+    @And("Click 'Create Account button'")
+    public void clickCreateAccountButton() {
+        signupPage.createAccountButtonClick();
+    }
 }

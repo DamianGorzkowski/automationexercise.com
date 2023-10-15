@@ -51,6 +51,9 @@ public class SignupPage {
     private WebElement zipcode;
     @FindBy(id = "mobile_number")
     private WebElement mobileNumber;
+    @FindBy(css = ".btn:nth-child(22)")
+    private WebElement createAccountButton;
+
 
 
 
@@ -92,6 +95,9 @@ public class SignupPage {
         city.sendKeys(userData.getCity());
         zipcode.sendKeys(userData.getZipcode());
         mobileNumber.sendKeys(userData.getMobileNumber());
+    }
+    public void createAccountButtonClick() {
+        createAccountButton.submit();
     }
 
 
