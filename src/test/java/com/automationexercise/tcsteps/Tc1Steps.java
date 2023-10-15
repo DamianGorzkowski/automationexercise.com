@@ -2,6 +2,7 @@ package com.automationexercise.tcsteps;
 
 import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.LoginPage;
+import com.automationexercise.pages.SignupPage;
 import com.automationexercise.pages.UserData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -19,15 +22,18 @@ public class Tc1Steps {
     private HomePage homePage;
     private LoginPage loginPage;
     private UserData userData;
+    private SignupPage signupPage;
 
 
     @Given("Launch browser")
     public void launchBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         userData = new UserData(driver);
+        signupPage = new SignupPage(driver);
 
     }
 
@@ -73,7 +79,18 @@ public class Tc1Steps {
     }
 
     @And("Fill details: {string}, {string}, {string}, {string}, {string}")
-    public void fillDetailsTitleNameEmailPasswordDateOfBirth() {
+    public void fillDetailsTitleNameEmailPasswordDateOfBirth(String title, String name, String email, String password, String dateOfBirth) {
+        signupPage.fillSignupPageForm(userData.setTitle(title).setName(name).setEmail(email).setPassword(password).setDateOfBirth(dateOfBirth));
 
+    }
+
+    @And("Select checkbox 'Sign up for our newsletter!'")
+    public void selectCheckboxSignUpForOurNewsletter() {
+        signupPage.setNewsletterCheckboxSignupPage();
+    }
+
+    @And("Select checkbox 'Receive special offers from our partners!'")
+    public void selectCheckboxReceiveSpecialOffersFromOurPartners() {
+        signupPage.setSpecialOffersCheckboxSignupPage();
     }
 }

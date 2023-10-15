@@ -20,10 +20,18 @@ public class SignupPage {
     private WebElement passwordSignupPage;
     @FindBy(id = "days")
     private WebElement dayDateOfBirth;
-    @FindBy(id = "months");
+
+    @FindBy(id = "months")
     private WebElement monthDateOfBirth;
-    @FindBy(id = "years");
+
+    @FindBy(id = "years")
     private WebElement yearDateOfBirth;
+    @FindBy(id = "newsletter")
+    private WebElement newsletterCheckboxSignupPage;
+
+    @FindBy(id = "optin")
+    private WebElement specialOffersCheckboxSignupPage;
+
 
 
 
@@ -45,7 +53,12 @@ public class SignupPage {
         dayDateOfBirth.sendKeys(String.valueOf(day));
         monthDateOfBirth.sendKeys(String.valueOf(month));
         yearDateOfBirth.sendKeys((String.valueOf(year)));
-
+    }
+    public void setNewsletterCheckboxSignupPage() {
+        newsletterCheckboxSignupPage.click();
+    }
+    public  void  setSpecialOffersCheckboxSignupPage() {
+        specialOffersCheckboxSignupPage.click();
     }
 
 
