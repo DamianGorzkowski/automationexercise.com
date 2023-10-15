@@ -93,4 +93,9 @@ public class Tc1Steps {
     public void selectCheckboxReceiveSpecialOffersFromOurPartners() {
         signupPage.setSpecialOffersCheckboxSignupPage();
     }
+
+    @And("Fill details: {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void fillDetailsFirstNameLastNameCompanyAddressAddressCountryStateCityZipcodeMobileNumber(String firstName, String lastName, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
+
+    }
 }
