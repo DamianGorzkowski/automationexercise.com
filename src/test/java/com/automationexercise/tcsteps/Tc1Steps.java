@@ -6,6 +6,7 @@ import com.automationexercise.pages.SignupPage;
 import com.automationexercise.pages.UserData;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -102,5 +103,13 @@ public class Tc1Steps {
     @And("Click 'Create Account button'")
     public void clickCreateAccountButton() {
         signupPage.createAccountButtonClick();
+    }
+
+    @Then("Verify that 'ACCOUNT CREATED!' is visible")
+    public void verifyThatACCOUNTCREATEDIsVisible() {
+        WebElement accountCreatedText = driver.findElement(By.cssSelector("b"));
+        String accountCreatedTextVisibility = accountCreatedText.getText();
+        assertEquals("ACCOUNT CREATED!", accountCreatedTextVisibility);
+
     }
 }
