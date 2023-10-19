@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
@@ -24,6 +25,7 @@ public class Tc1Steps {
     private LoginPage loginPage;
     private UserData userData;
     private SignupPage signupPage;
+    private Actions actions;
 
 
     @Given("Launch browser")
@@ -35,7 +37,7 @@ public class Tc1Steps {
         loginPage = new LoginPage(driver);
         userData = new UserData(driver);
         signupPage = new SignupPage(driver);
-
+        actions = new Actions(driver);
     }
 
     @And("Navigate to url {string}")
@@ -58,7 +60,6 @@ public class Tc1Steps {
         WebElement newUserSignupText = driver.findElement(By.cssSelector(".signup-form > h2"));
         String newUserText = newUserSignupText.getText();
         assertEquals("New User Signup!", newUserText);
-
     }
 
     @When("Enter {string} and {string} address")
@@ -69,7 +70,6 @@ public class Tc1Steps {
     @And("Click 'Signup' button")
     public void clickSignupButton() {
         loginPage.signInButtonClick();
-
     }
 
     @And("Verify that 'ENTER ACCOUNT INFORMATION' is visible")
@@ -82,7 +82,6 @@ public class Tc1Steps {
     @And("Fill details: {string}, {string}, {string}, {string}, {string}")
     public void fillDetailsTitleNameEmailPasswordDateOfBirth(String title, String name, String email, String password, String dateOfBirth) {
         signupPage.fillSignupPageForm(userData.setTitle(title).setName(name).setEmail(email).setPassword(password).setDateOfBirth(dateOfBirth));
-
     }
 
     @And("Select checkbox 'Sign up for our newsletter!'")
@@ -97,7 +96,7 @@ public class Tc1Steps {
 
     @And("Fill details: {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
     public void fillDetailsFirstNameLastNameCompanyAddressAddressCountryStateCityZipcodeMobileNumber(String firstName, String lastName, String company, String address, String address2, String country, String state, String city, String zipcode, String mobileNumber) {
-    signupPage.fillFormWIthOtherNeededInformation(userData.setFirstName(firstName).setLastName(lastName).setCompany(company).setAddress(address).setAddress2(address2).setCountry(country).setState(state).setCity(city).setZipcode(zipcode).setMobileNumber(mobileNumber));
+        signupPage.fillFormWIthOtherNeededInformation(userData.setFirstName(firstName).setLastName(lastName).setCompany(company).setAddress(address).setAddress2(address2).setCountry(country).setState(state).setCity(city).setZipcode(zipcode).setMobileNumber(mobileNumber));
     }
 
     @And("Click 'Create Account button'")
@@ -110,6 +109,18 @@ public class Tc1Steps {
         WebElement accountCreatedText = driver.findElement(By.cssSelector("b"));
         String accountCreatedTextVisibility = accountCreatedText.getText();
         assertEquals("ACCOUNT CREATED!", accountCreatedTextVisibility);
+    }
 
+    @And("Click 'Continue' button")
+    public void clickContinueButton() {
+        signupPage.continueButtonClick();
+        actions.moveByOffset(951, 66).click().perform();
+    }
+
+    @And("Verify that 'Logged in as {string}' is visible")
+    public void verifyThatLoggedInAsUsernameIsVisible(String userName) {
+        WebElement loggedName = driver.findElement(By.xpath("//header[@id='header']/div/div/div/div[2]/div/ul/li[10]/a"));
+        String name = loggedName.getText();
+        assertEquals("Logged in as " + userName, name);
     }
 }

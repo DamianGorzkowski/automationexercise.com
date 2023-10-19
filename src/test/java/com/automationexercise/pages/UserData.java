@@ -113,8 +113,6 @@ public class UserData {
     }
 
 
-
-
     public String getTitle() {
         return title;
     }

@@ -13,22 +13,18 @@ public class SignupPage {
 
     @FindBy(id = "id_gender1")
     private WebElement titleMrCheckbox;
-
     @FindBy(id = "id_gender2")
     private WebElement titleMrsCheckbox;
     @FindBy(id = "password")
     private WebElement passwordSignupPage;
     @FindBy(id = "days")
     private WebElement dayDateOfBirth;
-
     @FindBy(id = "months")
     private WebElement monthDateOfBirth;
-
     @FindBy(id = "years")
     private WebElement yearDateOfBirth;
     @FindBy(id = "newsletter")
     private WebElement newsletterCheckboxSignupPage;
-
     @FindBy(id = "optin")
     private WebElement specialOffersCheckboxSignupPage;
     @FindBy(id = "first_name")
@@ -53,16 +49,17 @@ public class SignupPage {
     private WebElement mobileNumber;
     @FindBy(css = ".btn:nth-child(22)")
     private WebElement createAccountButton;
+    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div/div/a")
+    private WebElement continueButton;
+    @FindBy(id = "header")
+    private WebElement header;
 
 
-
-
-
-
-    public SignupPage (WebDriver driver) {
+    public SignupPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-    public void fillSignupPageForm (UserData userData) {
+
+    public void fillSignupPageForm(UserData userData) {
         if (Objects.equals(userData.getTitle(), "Mr.")) {
             titleMrCheckbox.click();
         } else {
@@ -78,12 +75,15 @@ public class SignupPage {
         monthDateOfBirth.sendKeys(String.valueOf(month));
         yearDateOfBirth.sendKeys((String.valueOf(year)));
     }
+
     public void setNewsletterCheckboxSignupPage() {
         newsletterCheckboxSignupPage.click();
     }
-    public  void  setSpecialOffersCheckboxSignupPage() {
+
+    public void setSpecialOffersCheckboxSignupPage() {
         specialOffersCheckboxSignupPage.click();
     }
+
     public void fillFormWIthOtherNeededInformation(UserData userData) {
         firstName.sendKeys(userData.getFirstName());
         lastName.sendKeys(userData.getLastName());
@@ -96,9 +96,12 @@ public class SignupPage {
         zipcode.sendKeys(userData.getZipcode());
         mobileNumber.sendKeys(userData.getMobileNumber());
     }
+
     public void createAccountButtonClick() {
         createAccountButton.submit();
     }
 
-
+    public void continueButtonClick() {
+        continueButton.click();
+    }
 }

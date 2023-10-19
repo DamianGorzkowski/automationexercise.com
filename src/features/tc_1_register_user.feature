@@ -15,8 +15,8 @@ Feature: User register procedure
     And Fill details: '<first name>', '<last name>', '<company>', '<address>', '<address2>', '<country>', '<state>', '<city>', '<zipcode>', '<mobile number>'
     And Click 'Create Account button'
     Then Verify that 'ACCOUNT CREATED!' is visible
-#    And Click 'Continue' button
-#    And Verify that 'Logged in as username' is visible
+    And Click 'Continue' button
+    And Verify that 'Logged in as '<name>'' is visible
 
     Examples:
       |name  |email          |title     |password  |date of birth|first name|last name |company|address      |address2|country|state      |city    |zipcode|mobile number|
