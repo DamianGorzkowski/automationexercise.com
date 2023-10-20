@@ -5,7 +5,7 @@ Feature: Login User with correct email and password
     And Navigate to url 'http://automationexercise.com'
     And Verify that home page is visible successfully
     And Click on Signup | Login button
-#Verify 'Login to your account' is visible
+    And Verify 'Login to your account' is visible
 #Enter correct email address and password
 #Click 'login' button
 #Verify that 'Logged in as username' is visible
