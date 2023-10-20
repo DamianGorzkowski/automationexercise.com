@@ -16,11 +16,16 @@ public class HomePage {
     private WebElement homePageBody;
     @FindBy (css = ".navbar-nav > li:nth-child(4) > a")
     private WebElement logInSignInButton;
+    @FindBy(linkText = "Delete Account")
+    private WebElement deleteAccountButton;
 
     public boolean isVisible() {
         return homePageBody.isDisplayed();
     }
     public void clickSignUpButton () {
         logInSignInButton.click();
+    }
+    public void deleteAccountButtonClick() {
+        deleteAccountButton.click();
     }
 }

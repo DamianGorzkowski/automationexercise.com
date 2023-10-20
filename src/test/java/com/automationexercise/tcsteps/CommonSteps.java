@@ -1,10 +1,10 @@
 package com.automationexercise.tcsteps;
 
+import com.automationexercise.pages.HomePage;
 import com.automationexercise.pages.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CommonSteps {
     private WebDriver driver = WebDriverManager.getDriver();
+    private HomePage homePage = new HomePage(driver);
 
     @Given("Launch browser")
     public void launchBrowser() {
@@ -21,6 +22,10 @@ public class CommonSteps {
     @And("Navigate to url {string}")
     public void navigateToUrl(String url) {
         driver.get(url);
+    }
+    @And("Verify that home page is visible successfully")
+    public void verifyThatHomePageIsVisibleSuccessfully() {
+        assertTrue(homePage.isVisible());
     }
 
 }

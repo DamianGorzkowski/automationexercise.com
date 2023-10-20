@@ -22,6 +22,7 @@ public class UserData {
     private String zipcode;
     private String mobileNumber;
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -158,8 +159,8 @@ public class UserData {
     }
 
     public UserData setEmail(String email) {
-//        this.email = email;
-        this.email = UUID.randomUUID() + "@gmail.com";
+        this.email = email;
+//        this.email = UUID.randomUUID() + "@gmail.com";
         return this;
     }
 

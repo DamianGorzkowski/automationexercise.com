@@ -24,10 +24,7 @@ public class Tc1Steps {
     private Actions actions;
 
 
-    @And("Verify that home page is visible successfully")
-    public void verifyThatHomePageIsVisibleSuccessfully() {
-        assertTrue(homePage.isVisible());
-    }
+
     @And("Click on Signup | Login button")
     public void clickOnSignupLoginButton() {
         homePage.clickSignUpButton();

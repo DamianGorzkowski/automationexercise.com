@@ -17,6 +17,12 @@ public class LogInPage {
     private WebElement newUserEmailInputBox;
     @FindBy(css = ".btn:nth-child(5)")
     private WebElement signInButton;
+    @FindBy(name = "email")
+    private WebElement existingUserEmail;
+    @FindBy(name = "password")
+    private WebElement existingUserPassword;
+    @FindBy(css = ".btn:nth-child(4)")
+    private WebElement loginButtonSignInPage;
 
     public void fillNewUserInputBox(UserData userData) {
         nameInputBox.sendKeys(userData.getName());
@@ -24,5 +30,12 @@ public class LogInPage {
     }
     public void signInButtonClick () {
         signInButton.click();
+    }
+    public void existingUserEmailAndPasswordInput(UserData userData) {
+        existingUserEmail.sendKeys(userData.getEmail());
+        existingUserPassword.sendKeys(userData.getPassword());
+    }
+    public void loginButtonSignInPageClick() {
+        loginButtonSignInPage.click();
     }
 }
