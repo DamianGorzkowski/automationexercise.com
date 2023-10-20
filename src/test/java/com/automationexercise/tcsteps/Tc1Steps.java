@@ -27,31 +27,25 @@ public class Tc1Steps {
     private SignupPage signupPage;
     private Actions actions;
 
-
     @Given("Launch browser")
     public void launchBrowser() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
-        userData = new UserData(driver);
-        signupPage = new SignupPage(driver);
-        actions = new Actions(driver);
     }
-
     @And("Navigate to url {string}")
     public void navigateToUrl(String url) {
-        driver.get(url);
+        this.driver.get(url);
     }
 
     @And("Verify that home page is visible successfully")
     public void verifyThatHomePageIsVisibleSuccessfully() {
+        homePage = new HomePage(driver);
         assertTrue(homePage.isVisible());
     }
-
     @And("Click on Signup | Login button")
     public void clickOnSignupLoginButton() {
+        this.homePage = new HomePage(driver);
         homePage.clickSignUpButton();
     }
 
@@ -64,6 +58,8 @@ public class Tc1Steps {
 
     @When("Enter {string} and {string} address")
     public void enterNameAndEmailAddress(String name, String email) {
+        loginPage = new LoginPage(driver);
+        userData = new UserData(driver);
         loginPage.fillNewUserInputBox(userData.setName(name).setEmail(email));
     }
 
@@ -81,6 +77,7 @@ public class Tc1Steps {
 
     @And("Fill details: {string}, {string}, {string}, {string}, {string}")
     public void fillDetailsTitleNameEmailPasswordDateOfBirth(String title, String name, String email, String password, String dateOfBirth) {
+        signupPage = new SignupPage(driver);
         signupPage.fillSignupPageForm(userData.setTitle(title).setName(name).setEmail(email).setPassword(password).setDateOfBirth(dateOfBirth));
     }
 
@@ -114,6 +111,7 @@ public class Tc1Steps {
     @And("Click 'Continue' button")
     public void clickContinueButton() {
         signupPage.continueButtonClick();
+        actions = new Actions(driver);
         actions.moveByOffset(951, 66).click().perform();
     }
 
