@@ -1,6 +1,6 @@
-Feature: Login User with correct email and password
+Feature: Logout user
 
-  Scenario Outline: Successful user login
+  Scenario Outline: Successful user logout
     Given Launch browser
     And Navigate to url 'http://automationexercise.com'
     And Verify that home page is visible successfully
@@ -9,10 +9,10 @@ Feature: Login User with correct email and password
     And Enter correct '<email>' address and '<password>'
     And Click 'login' button
     And Verify that 'Logged in as '<name>'' is visible
-    When Click 'Delete Account' button
-    Then Verify that 'ACCOUNT DELETED!' is visible
-#    And Quit Driver
+    When Click 'Logout' button
+    Then Verify that user is navigated to login page
+    And Quit Driver
 
-  Examples:
-    |name|email|password|
-    |Damian|tc2abc@gmail.com|Dami123456!|
+    Examples:
+      |name|email|password|
+      |Damian|tc4abc@gmail.com|Dami123456!|

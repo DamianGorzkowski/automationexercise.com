@@ -1,6 +1,6 @@
-Feature: Login User with correct email and password
+Feature: Login User with incorrect email and password
 
-  Scenario Outline: Successful user login
+  Scenario Outline: Unsuccessful user login
     Given Launch browser
     And Navigate to url 'http://automationexercise.com'
     And Verify that home page is visible successfully
@@ -9,8 +9,8 @@ Feature: Login User with correct email and password
     When Enter incorrect '<email>' address and '<password>'
     And Click 'login' button
     Then Verify error 'Your email or password is incorrect!' is visible
-    And Quit Driver
+#    And Quit Driver
 
     Examples:
       |email|password|
-      |dami5@gmail.com|Dami1234!|
+      |tc3abc@gmail.com|WrongPassword|
