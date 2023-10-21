@@ -6,13 +6,11 @@ Feature: Login User with correct email and password
     And Verify that home page is visible successfully
     And Click on Signup | Login button
     And Verify 'Login to your account' is visible
-    And Enter correct '<email>' address and '<password>'
+    When Enter incorrect '<email>' address and '<password>'
     And Click 'login' button
-    And Verify that 'Logged in as '<name>'' is visible
-    When Click 'Delete Account' button
-    Then Verify that 'ACCOUNT DELETED!' is visible
+    Then Verify error 'Your email or password is incorrect!' is visible
     And Quit Driver
 
-  Examples:
-    |name|email|password|
-    |Damian|dami5@gmail.com|Dami123456!|
+    Examples:
+      |email|password|
+      |dami5@gmail.com|Dami1234!|

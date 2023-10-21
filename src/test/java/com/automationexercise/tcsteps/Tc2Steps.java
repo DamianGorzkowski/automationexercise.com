@@ -49,7 +49,7 @@ public class Tc2Steps {
 
     @Then("Verify that 'ACCOUNT DELETED!' is visible")
     public void verifyThatACCOUNTDELETEDIsVisible() {
-        WebElement element = driver.findElement(By.cssSelector("b"));
+        WebElement element = driver.findElement(By.cssSelector("#form > div > div > div > h2 > b"));
         String Text = element.getText();
         assertEquals("ACCOUNT DELETED!", Text);
     }

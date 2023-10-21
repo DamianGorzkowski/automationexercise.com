@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CommonSteps {
@@ -28,4 +29,9 @@ public class CommonSteps {
         assertTrue(homePage.isVisible());
     }
 
+    @And("Quit Driver")
+    public void quitDriver() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.quit();
+    }
 }
