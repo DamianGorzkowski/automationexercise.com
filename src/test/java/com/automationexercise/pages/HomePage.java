@@ -19,9 +19,9 @@ public class HomePage {
     @FindBy(linkText = "Delete Account")
     private WebElement deleteAccountButton;
 
-    public boolean isVisible() {
-        return homePageBody.isDisplayed();
-    }
+//    public boolean isVisible() {
+//        return homePageBody.isDisplayed();
+//    }
     public void clickSignUpButton () {
         logInSignInButton.click();
     }

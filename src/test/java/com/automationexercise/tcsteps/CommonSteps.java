@@ -26,7 +26,9 @@ public class CommonSteps {
     }
     @And("Verify that home page is visible successfully")
     public void verifyThatHomePageIsVisibleSuccessfully() {
-        assertTrue(homePage.isVisible());
+        String currentURL = driver.getCurrentUrl();
+        assertEquals("https://automationexercise.com/", currentURL);
+//        assertTrue(homePage.isVisible());
     }
 
     @And("Quit Driver")
